@@ -20,7 +20,7 @@ build_macos:
 
 build_linux:
 	set GOOS=linux
-	set GOARCH=arm
+	set GOARCH=386
 	mkdir -p _output/linux
 	go build -tags "sqlite_foreign_keys release linux" -ldflags="$(GO_LDFLAGS)" -o _output/linux/yarr src/main.go
 
