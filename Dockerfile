@@ -6,4 +6,4 @@ RUN apk update && \
 COPY ./yarr /usr/local/bin/yarr
 RUN chmod +x ./yarr
 EXPOSE 7070
-CMD ["/usr/local/bin/yarr", "-addr", "0.0.0.0:7070", "-db", "/data/yarr.db"]
+CMD ["/root/yarr", "-addr", "0.0.0.0:7070"]
