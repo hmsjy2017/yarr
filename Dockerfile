@@ -1,4 +1,5 @@
 FROM alpine:latest
+RUN apk update
 RUN apk add --no-cache ca-certificates && \
     update-ca-certificates
 RUN wgwt https://github.com/nkanaev/yarr/releases/download/v2.0/yarr-v2.0-linux64.zip && unzip yarr-v2.0-linux64.zip
