@@ -1,11 +1,12 @@
 FROM golang:alpine AS build
-RUN apk add build-base git
+RUN apk update && apk add build-base git
 WORKDIR /src
 COPY . .
-RUN make build_linux
+RUN mkdir -p _output/linux
+RUN	GOOS=linux GOARCH=amd64 go build -tags "sqlite_foreign_keys release linux" -ldflags="$(GO_LDFLAGS)" -o _output/linux/yarr src/main.go
 
 FROM alpine:latest
-RUN apk add --no-cache ca-certificates && \
+RUN apk update && apk add --no-cache ca-certificates && \
     update-ca-certificates
 COPY --from=build /src/_output/linux/yarr /usr/local/bin/yarr
 EXPOSE 7070
