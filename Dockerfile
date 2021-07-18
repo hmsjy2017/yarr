@@ -1,7 +1,7 @@
 FROM alpine:latest
 WORKDIR /root/yarr
 RUN apk update && \
-    add --no-cache ca-certificates && \
+    apk add --no-cache ca-certificates && \
     update-ca-certificates
 COPY ./yarr /usr/local/bin/yarr
 RUN chmod +x ./yarr
